@@ -2,30 +2,43 @@
 	function add_keychain()
 	{
 			print "\n\nYou have 0 keychains. How many to add? \n";
-			$key=explode(' ', readline());
-			echo "You now have ".$key[0]." keychains\n\n";
+			$key=(int)readline('');
+			echo "You now have ".$key." keychains\n\n";
+			remove_keychain($key);
 	}
-	function remove_keychain()
+	function remove_keychain($key_1)
 	{
-			print "\n\nYou have $key keychains. How many to remove? ";
+			print "\n\nYou have ".$key."keychains. How many to remove? ";
 			$remove=(int)readline('');
-			$remains=$key[0] - $remove;
-			echo "\nYou have ".$remains." keychains\n\n";
+			$key_1=$key_1-$remove;
+			echo "\nYou have ".$key_1." keychains\n\n";
+			view_order($key_1);
 	}
-	function view_order($num_keychains,$price_per_keychain,$tax,$base_shipping,$per_keychain_shipping)
+	function view_order($key_2)
 	{
-			print "\n\nYou have ".$remains." keychains.\n";
+			print "\n\nYou have ".$key_2." keychains.\n";
 			echo "Keychains cost $10 each.\n";
-			$cost=$remains * 10;
+			$cost=$key_2 * 10;
 			echo "Total cost is ".$cost."\n\n";
+			$tax=8.25;
+			$base_ship=5.00;
+			$per_key_ship=1.00;
+			checkout($cost,$key_2,$tax,$base_ship,$per_key_ship);
 	}
-	function checkout()
+	function checkout($cost_1,$key_3,$t,$b_s,$p_s)
 	{
 			print "\n\nCHECK OUT\n\n";
 			$name=readline('What is your name? ');
-			echo "You have ".$remain." keychains.\n";
+			echo "You have ".$key_3." keychains.\n";
 			echo "Keychains cost $10 each.\n";
-			echo "Total cost is ".$cost;
+			echo "Subtotal cost is ".$cost_1;
+			echo "\nTax for the keychains: ".$t;
+			echo "\nBase shipping charge: ".$b_s;
+			echo "\nKeychain shipping charge: ".$p_s;
+			$a_cost=$t + $b_s + $p_s;
+			$t_cost=$cost_1 + $a_cost;
+			echo "\nAdditional Charges: ".$a_cost;
+			echo "\nTotal cost is: ".$t_cost;
 			echo "\nThanks for your order, ".$name."!";		
 	}
 	$i=1;

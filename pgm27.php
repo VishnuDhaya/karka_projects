@@ -2,30 +2,33 @@
 	function add_keychain()
 	{
 			print "\n\nYou have 0 keychains. How many to add? \n";
-			$key=explode(' ', readline());
-			echo "You now have ".$key[0]." keychains\n\n";
+			$key=(int)readline('');
+			echo "You now have ".$key." keychains\n\n";
+			remove_keychain($key);
 	}
-	function remove_keychain()
+	function remove_keychain($key_1)
 	{
-			print "\n\nYou have $key keychains. How many to remove? ";
+			print "\n\nYou have ".$key."keychains. How many to remove? ";
 			$remove=(int)readline('');
-			$remains=$key[0] - $remove;
-			echo "\nYou have ".$remains." keychains\n\n";
+			$key_1=$key_1-$remove;
+			echo "\nYou have ".$key_1." keychains\n\n";
+			view_order($key_1);
 	}
-	function view_order()
+	function view_order($key_2)
 	{
-			print "\n\nYou have ".$remains." keychains.\n";
+			print "\n\nYou have ".$key_2." keychains.\n";
 			echo "Keychains cost $10 each.\n";
-			$cost=$remains * 10;
+			$cost=$key_2 * 10;
 			echo "Total cost is ".$cost."\n\n";
+			checkout($cost,$key_2);
 	}
-	function checkout()
+	function checkout($cost_1,$key_3)
 	{
 			print "\n\nCHECK OUT\n\n";
 			$name=readline('What is your name? ');
-			echo "You have ".$remain." keychains.\n";
+			echo "You have ".$key_3." keychains.\n";
 			echo "Keychains cost $10 each.\n";
-			echo "Total cost is ".$cost;
+			echo "Total cost is ".$cost_1;
 			echo "\nThanks for your order, ".$name."!";		
 	}
 	$i=1;

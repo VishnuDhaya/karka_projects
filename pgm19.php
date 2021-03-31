@@ -1,7 +1,7 @@
 <?php
 	echo "I'm thinking of a number between 1-100. You have 7 guesses.\n";
 	$i=1;
-	while($i<=7)
+	while($i<=10)
 	{
 		echo "Guess # ".$i." : ";
 		$num=(int)readline('');
@@ -21,6 +21,7 @@
 		if($i==7)
 		{
 			echo "\n\n!!!Sorry, you didn't guess it in 7 tries. you lose.!!!";
+			break;
 		}
 		$i++;
 	}
